@@ -155,36 +155,106 @@ class HtmlProductWriter extends ShopProductWriter
          <form action="./index.php" method="post">
           <label for="producttype">Product Type:</label>
           <select id="producttype" name="producttype">
+                <option value="hidden" style="display:none;">Select</option>  
                 <option value="book">Book</option>
                 <option value="cd">CD</option>
-                <option value="game">Games</option>
+                <option value="game">Game</option>
           </select> 
           <br />
           <br />
-         <label for="name">Author / Artist:</label><br />
-         <label for="fname">First Name:</label>
-           <input type="text" id="fname" name="fname"><br />
-          <label for="sname">Main Name / Surname:</label>
-           <input type="text" id="sname" name="sname">
-           <br />
-           <br />
-         <label for="title">Title:</label>
-           <input type="text" id="title" name="title">
-           <br />
-           <br />
-         <label for="pages">Pages/Duration:</label>
-           <input type="text" id="pages" name="pages">
-           <br />
-           <br />
-          <label for="price">Price:</label>
-           <input type="text" id="price" name="price">
-           <br />
-           <br /> 
-           <input type="submit" value="Submit">
+        <div class="ffor">
+          <div id="cdForm" style="display:none">
+          <label for="cd_fname" style="font-size:20px;"><b>Artist</b></label>
+          <br />
+          <label for="cd_fname">First Name:</label>
+          <input type="text" id="cd_fname" name="fname"><br />
+          <br />
+          <label for="cd_sname">Last Name:</label>
+          <input type="text" id="cd_sname" name="sname">
+          <br />
+          <br />
+          <label for="cd_title">Title:</label>
+          <input type="text" id="cd_title" name="title">
+          <br />
+          <br />
+          <label for="cd_pages">Duration</label>
+          <input type="text" id="cd_pages" name="pages">
+          <br />
+          <br />
+          <label for="cd_price">Price:</label>
+          <input type="text" id="cd_price" name="price">
+          <br />
+          <br />
+      </div>
+      
+      <div id="bookForm" style="display:none">
+          <label for="book_fname" style="font-size:20px;"><b>Author</b></label>
+          <br />
+          <label for="book_fname">First Name:</label>
+          <input type="text" id="book_fname" name="fname"><br />
+          <br />
+          <label for="book_sname">Last Name:</label>
+          <input type="text" id="book_sname" name="sname">
+          <br />
+          <br />
+          <label for="book_title">Title:</label>
+          <input type="text" id="book_title" name="title">
+          <br />
+          <br />
+          <label for="book_pages">Pages:</label>
+          <input type="text" id="book_pages" name="pages">
+          <br />
+          <br />
+          <label for="book_price">Price:</label>
+          <input type="text" id="book_price" name="price">
+          <br />
+          <br />
+      </div>
+      
+      <div id="gameForm" style="display:none">
+          <label for="game_fname" style="font-size:20px;"><b>Author</b></label>
+          <br />
+          <label for="game_fname">First Name:</label>
+          <input type="text" id="game_fname" name="fname"><br />
+          <br />
+          <label for="game_sname">Last Name:</label>
+          <input type="text" id="game_sname" name="sname">
+          <br />
+          <br />
+          <label for="game_title">Title:</label>
+          <input type="text" id="game_title" name="title">
+          <br />
+          <br />
+          <label for="game_pages">PEGI:</label>
+          <input type="text" id="game_pages" name="pages">
+          <br />
+          <br />
+          <label for="game_price">Price:</label>
+          <input type="text" id="game_price" name="price">
+          <br />
+          <br />
+      </div>
+      
+        <input type="submit" value="Submit">
         </form> 
-        ';
-    }
-    
-    
-}
+<div/>
+<script>
+document.getElementById("producttype").addEventListener("change", showCategoryForm);
 
+function showCategoryForm() {
+    var selectedOption = document.getElementById("producttype").value;
+    document.getElementById("cdForm").style.display = "none"; //hides the form inititally
+    document.getElementById("bookForm").style.display = "none";
+    document.getElementById("gameForm").style.display = "none";
+
+    // Show the selected form
+    if (selectedOption === "cd") {
+        document.getElementById("cdForm").style.display = "block";
+    } else if (selectedOption === "book") {
+        document.getElementById("bookForm").style.display = "block";
+    } else if (selectedOption === "game") {
+        document.getElementById("gameForm").style.display = "block";
+    }
+}
+</script   
+';}}

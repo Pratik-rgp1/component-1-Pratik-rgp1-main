@@ -38,6 +38,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $price = (is_numeric($_POST['price']) ? (float)$_POST['price'] : 0);
     }
     \awe\JsonUtility::addNewProduct("products.json", $producttype, $fname, $sname, $title, $pages, $price);
+
+    header("Location: ./index.php");
+    exit();
 }
 
 if($api_call)   $products = new \awe\JsonProductWriter();
@@ -45,8 +48,6 @@ else            $products = new \awe\HtmlProductWriter();
 
 $productArray = \awe\JsonUtility::makeProductArray("products.json");
 $products->setProducts($productArray);
-
-
 
 $products->write();
 
